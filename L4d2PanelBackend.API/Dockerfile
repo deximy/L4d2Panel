@@ -9,7 +9,7 @@ WORKDIR /l4d2_server
 COPY --from=get_l4d2_server ["/home/steam/l4d2_server", "."]
 RUN dpkg --add-architecture i386 \
     && apt-get update -y \
-    && apt-get install -y --no-install-recommends lib32gcc-s1 expect \
+    && apt-get install -y --no-install-recommends lib32gcc-s1 lib32z1 expect \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
