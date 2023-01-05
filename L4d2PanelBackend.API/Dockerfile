@@ -13,6 +13,7 @@ RUN dpkg --add-architecture i386 \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+VOLUME ["/l4d2/left4dead2/addons", "/l4d2/left4dead2/cfg", "/l4d2/left4dead2/scripts"]
 EXPOSE 80
 EXPOSE 443
 
