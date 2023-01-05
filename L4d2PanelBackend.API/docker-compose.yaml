@@ -1,6 +1,6 @@
 services:
   l4d2:
-    image: l4d2panelbackendapi
+    image: deximy/l4d2panel
     container_name: l4d2
     ports:
       - 27015:27015
