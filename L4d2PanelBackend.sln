@@ -8,7 +8,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L4d2PanelBackend.API", "L4d
 		{BE3C3F80-211F-40C0-8A44-8FE675AC7564} = {BE3C3F80-211F-40C0-8A44-8FE675AC7564}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L4d2PanelBackend.Market.API", "L4d2PanelBackend.Market.API\L4d2PanelBackend.Market.API.csproj", "{BE3C3F80-211F-40C0-8A44-8FE675AC7564}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L4d2PanelBackend.Market.API", "L4d2PanelBackend.Market.API\L4d2PanelBackend.Market.API.csproj", "{BE3C3F80-211F-40C0-8A44-8FE675AC7564}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
