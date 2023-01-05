@@ -1,12 +1,12 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM cm2network/steamcmd AS get_l4d2_server
-RUN mkdir /home/steam/l4d2_server \
-    && ./steamcmd.sh +force_install_dir /home/steam/l4d2_server +login anonymous +app_update 222860 validate +quit
+FROM steamcmd/steamcmd AS get_l4d2_server
+RUN mkdir /home/l4d2_server \
+    && steamcmd +force_install_dir /home/l4d2_server +login anonymous +app_update 222860 validate +quit
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /l4d2_server
-COPY --from=get_l4d2_server ["/home/steam/l4d2_server", "."]
+WORKDIR /l4d2
+COPY --from=get_l4d2_server ["/home/l4d2_server", "."]
 RUN dpkg --add-architecture i386 \
     && apt-get update -y \
     && apt-get install -y --no-install-recommends lib32gcc-s1 lib32z1 expect \

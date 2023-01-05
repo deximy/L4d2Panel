@@ -1,10 +1,11 @@
-﻿using L4d2PanelBackend.Repository;
-using L4d2PanelBackend.ViewModels;
+﻿using L4d2PanelBackend.API.Models;
+using L4d2PanelBackend.API.Repository;
+using L4d2PanelBackend.API.ViewModels;
 using System.Diagnostics;
 
-namespace L4d2PanelBackend.Services
+namespace L4d2PanelBackend.API.Services
 {
-    public class ProcessService: IProcessService
+    public class ProcessService : IProcessService
     {
         private readonly IProcessesRepository processes_repository_;
 
@@ -95,11 +96,11 @@ namespace L4d2PanelBackend.Services
 
             try
             {
-                Environment.SetEnvironmentVariable("LD_LIBRARY_PATH", "/l4d2_server:/l4d2_server/bin:");
+                Environment.SetEnvironmentVariable("LD_LIBRARY_PATH", "/l4d2:/l4d2/bin:");
 
                 process_ = new Process();
                 process_.StartInfo.FileName = "unbuffer";
-                process_.StartInfo.Arguments = "-p /l4d2_server/srcds_linux -game left4dead2 -ip 0.0.0.0 -port 27015 +map c2m1_highway";
+                process_.StartInfo.Arguments = "-p /l4d2/srcds_linux -game left4dead2 -ip 0.0.0.0 -port 27015 +map c2m1_highway";
                 process_.StartInfo.UseShellExecute = false;
 
                 var callback_output = new DataReceivedEventHandler(
@@ -131,7 +132,7 @@ namespace L4d2PanelBackend.Services
                 throw;
             }
 
-            var new_process_log = new Models.Processes() {
+            var new_process_log = new Processes() {
                 start_time = process_.StartTime,
             };
             var guid = await processes_repository_.Add(new_process_log);
@@ -204,7 +205,7 @@ namespace L4d2PanelBackend.Services
             await processes_repository_.Update(GetClosedProcessLog(log.First(), process_));
         }
 
-        private Models.Processes GetClosedProcessLog(Models.Processes log, Process? process = null)
+        private Processes GetClosedProcessLog(Processes log, Process? process = null)
         {
             if (process == null)
             {

@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using L4d2PanelBackend.Repository;
-using L4d2PanelBackend.Services;
 using System.Text;
 using tusdotnet;
 using tusdotnet.Interfaces;
 using tusdotnet.Models;
 using tusdotnet.Models.Configuration;
 using tusdotnet.Stores;
+using L4d2PanelBackend.API.Repository;
+using L4d2PanelBackend.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -73,7 +73,7 @@ app.MapGet("/upload/{fileId}", DownloadFileEndpoint.HandleRoute);
 
 app.UseEndpoints(
     endpoints => {
-        endpoints.MapHub<L4d2PanelBackend.Hubs.MessageHub>("/hub");
+        endpoints.MapHub<L4d2PanelBackend.API.Hubs.MessageHub>("/hub");
     }
 );
 
@@ -102,14 +102,14 @@ static DefaultTusConfiguration CreateTusConfiguration(IServiceProvider servicePr
                 Console.WriteLine(Path.Combine(tus_root_path, file.Id));
                 Console.WriteLine(
                     Path.Combine(
-                        BaseFileService.RelativePathToAbsulotePath("/l4d2_server/left4dead2", metadata["location"].GetString(Encoding.UTF8)),
+                        BaseFileService.RelativePathToAbsulotePath("/l4d2/left4dead2", metadata["location"].GetString(Encoding.UTF8)),
                         metadata["name"].GetString(Encoding.UTF8)
                     )
                 );
                 File.Copy(
                     Path.Combine(tus_root_path, file.Id),
                     Path.Combine(
-                        BaseFileService.RelativePathToAbsulotePath("/l4d2_server/left4dead2", metadata["location"].GetString(Encoding.UTF8)),
+                        BaseFileService.RelativePathToAbsulotePath("/l4d2/left4dead2", metadata["location"].GetString(Encoding.UTF8)),
                         metadata["name"].GetString(Encoding.UTF8)
                     ),
                     true
