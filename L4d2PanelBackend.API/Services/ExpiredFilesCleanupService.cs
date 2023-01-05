@@ -2,7 +2,7 @@
 using tusdotnet.Models;
 using tusdotnet.Models.Expiration;
 
-namespace L4d2PanelBackend.Services
+namespace L4d2PanelBackend.API.Services
 {
     public class ExpiredFilesCleanupService : IHostedService, IDisposable
     {

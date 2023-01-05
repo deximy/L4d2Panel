@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace L4d2PanelBackend.Repository
+namespace L4d2PanelBackend.API.Repository
 {
     public class BaseMemoryRepository<T> : IRepository<T> where T : Models.BaseModel, new()
     {
@@ -65,7 +65,7 @@ namespace L4d2PanelBackend.Repository
 
         public Task<bool> Update(T entity)
         {
-            var entity_list = model_list_.Select((x, i) => new {i, x}).Where(t => t.x.id == entity.id).Select(t => t.i).ToList();
+            var entity_list = model_list_.Select((x, i) => new { i, x }).Where(t => t.x.id == entity.id).Select(t => t.i).ToList();
             if (entity_list.Count != 1)
             {
                 return Task.FromResult(false);

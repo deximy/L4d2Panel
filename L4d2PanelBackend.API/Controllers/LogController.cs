@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace L4d2PanelBackend.Controllers
+namespace L4d2PanelBackend.API.Controllers
 {
     [Route("logs")]
     [ApiController]

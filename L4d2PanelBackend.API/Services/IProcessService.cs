@@ -1,6 +1,6 @@
-﻿using L4d2PanelBackend.ViewModels;
+﻿using L4d2PanelBackend.API.ViewModels;
 
-namespace L4d2PanelBackend.Services
+namespace L4d2PanelBackend.API.Services
 {
     public interface IProcessService
     {

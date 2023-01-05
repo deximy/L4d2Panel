@@ -1,6 +1,6 @@
 ﻿using SqlSugar;
 
-namespace L4d2PanelBackend.Models
+namespace L4d2PanelBackend.API.Models
 {
     public class BaseModel
     {

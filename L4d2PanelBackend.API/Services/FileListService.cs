@@ -1,4 +1,4 @@
-﻿namespace L4d2PanelBackend.Services
+﻿namespace L4d2PanelBackend.API.Services
 {
     public class FileListService
     {

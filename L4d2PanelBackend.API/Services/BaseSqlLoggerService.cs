@@ -1,7 +1,7 @@
 ﻿using SqlSugar;
 using System.Linq.Expressions;
 
-namespace L4d2PanelBackend.Services
+namespace L4d2PanelBackend.API.Services
 {
     public class BaseSqlLoggerService<T> : DbScope, ILoggerService<T> where T : class
     {
@@ -31,12 +31,15 @@ namespace L4d2PanelBackend.Services
     public class DbScope
     {
         protected static SqlSugarScope Db = new SqlSugarScope(
-            new ConnectionConfig() {
+            new ConnectionConfig()
+            {
                 DbType = DbType.Sqlite,
                 ConnectionString = "ServerManager.db",
             },
-            db => {
-                db.Aop.OnLogExecuting = (s, p) => {
+            db =>
+            {
+                db.Aop.OnLogExecuting = (s, p) =>
+                {
                     Console.WriteLine(s);
                 };
             }

@@ -1,9 +1,10 @@
-﻿using SqlSugar;
+﻿using L4d2PanelBackend.API.Models;
+using SqlSugar;
 using System.Linq.Expressions;
 
-namespace L4d2PanelBackend.Repository
+namespace L4d2PanelBackend.API.Repository
 {
-    public abstract class BaseSqlRepository<T> : DbScope, IRepository<T> where T : Models.BaseModel, new()
+    public abstract class BaseSqlRepository<T> : DbScope, IRepository<T> where T : BaseModel, new()
     {
         public async Task<Guid> Add(T entity)
         {
@@ -49,7 +50,7 @@ namespace L4d2PanelBackend.Repository
                 .ToListAsync();
         }
 
-        
+
         public async Task<List<T>> Query(Expression<Func<T, bool>> where_expression, Expression<Func<T, object>> order_by_expression, int top, bool is_asc = true)
         {
             return await

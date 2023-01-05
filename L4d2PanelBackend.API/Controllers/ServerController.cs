@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using L4d2PanelBackend.Services;
+using L4d2PanelBackend.API.Hubs;
+using L4d2PanelBackend.API.Services;
 
-namespace L4d2PanelBackend.Controllers
+namespace L4d2PanelBackend.API.Controllers
 {
     [Route("processes")]
     [ApiController]
     public class ServerController : ControllerBase
     {
         private readonly ILogger<ServerController> logger_;
-        private readonly IHubContext<Hubs.MessageHub> hub_context_;
+        private readonly IHubContext<MessageHub> hub_context_;
         private readonly IProcessService process_service_;
 
-        public ServerController(ILogger<ServerController> logger, IHubContext<Hubs.MessageHub> hub_context, IProcessService process_service)
+        public ServerController(ILogger<ServerController> logger, IHubContext<MessageHub> hub_context, IProcessService process_service)
         {
             logger_ = logger;
             hub_context_ = hub_context;
@@ -59,13 +60,13 @@ namespace L4d2PanelBackend.Controllers
         //}
 
         [HttpGet]
-        public async Task<IActionResult> GetServerProcessId([FromQuery]int? count)
+        public async Task<IActionResult> GetServerProcessId([FromQuery] int? count)
         {
             return Ok(await process_service_.GetProcessStateId(count ?? 1));
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetServerProcessState([FromRoute]Guid id)
+        public async Task<IActionResult> GetServerProcessState([FromRoute] Guid id)
         {
             return Ok(await process_service_.GetProcessState(id));
         }
@@ -104,7 +105,8 @@ namespace L4d2PanelBackend.Controllers
             {
                 logger_.LogInformation("Try to start server.");
                 guid = await process_service_.RunServer(
-                    (msg) => {
+                    (msg) =>
+                    {
                         hub_context_.Clients.All.SendAsync("ReceiveMessage", msg);
                     }
                 );

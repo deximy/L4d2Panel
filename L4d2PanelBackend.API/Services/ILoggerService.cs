@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace L4d2PanelBackend.Services
+namespace L4d2PanelBackend.API.Services
 {
     public interface ILoggerService<T> where T : class
     {

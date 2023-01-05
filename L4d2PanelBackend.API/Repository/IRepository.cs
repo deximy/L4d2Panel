@@ -1,8 +1,9 @@
-﻿using System.Linq.Expressions;
+﻿using L4d2PanelBackend.API.Models;
+using System.Linq.Expressions;
 
-namespace L4d2PanelBackend.Repository
+namespace L4d2PanelBackend.API.Repository
 {
-    public interface IRepository<T> where T : Models.BaseModel, new()
+    public interface IRepository<T> where T : BaseModel, new()
     {
         public Task<Guid> Add(T entity);
 

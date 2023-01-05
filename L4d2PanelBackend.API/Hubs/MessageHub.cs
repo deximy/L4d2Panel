@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-namespace L4d2PanelBackend.Hubs
+namespace L4d2PanelBackend.API.Hubs
 {
     public class MessageHub : Hub
     {

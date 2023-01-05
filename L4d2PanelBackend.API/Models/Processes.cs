@@ -1,9 +1,9 @@
 ﻿using SqlSugar;
 
-namespace L4d2PanelBackend.Models
+namespace L4d2PanelBackend.API.Models
 {
     [SugarTable("Processes")]
-    public class Processes: BaseModel
+    public class Processes : BaseModel
     {
         public int? exit_code { get; set; } = null;
 

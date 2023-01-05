@@ -1,6 +1,8 @@
-﻿namespace L4d2PanelBackend.Repository
+﻿using L4d2PanelBackend.API.Models;
+
+namespace L4d2PanelBackend.API.Repository
 {
-    public class ProcessesMemoryRepository: BaseMemoryRepository<Models.Processes>, IProcessesRepository
+    public class ProcessesMemoryRepository : BaseMemoryRepository<Processes>, IProcessesRepository
     {
     }
 }

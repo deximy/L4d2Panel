@@ -1,7 +1,7 @@
 ﻿using SqlSugar;
 using System.Linq.Expressions;
 
-namespace L4d2PanelBackend.Services
+namespace L4d2PanelBackend.API.Services
 {
     public class BaseMemoryLoggerService<T> : ILoggerService<T> where T : class
     {

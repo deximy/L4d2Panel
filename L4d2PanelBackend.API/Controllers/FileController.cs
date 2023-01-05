@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using L4d2PanelBackend.Services;
 using System.Web;
+using L4d2PanelBackend.API.Services;
 
-namespace L4d2PanelBackend.Controllers
+namespace L4d2PanelBackend.API.Controllers
 {
     [Route("files")]
     [ApiController]

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using L4d2PanelBackend.Services;
 
-namespace L4d2PanelBackend.Controllers
+namespace L4d2PanelBackend.API.Controllers
 {
     [Route("init")]
     [ApiController]
