@@ -57,11 +57,15 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowAll");
+
 var websocket_options = new WebSocketOptions();
 websocket_options.AllowedOrigins.Add("*");
 app.UseWebSockets(websocket_options);
 
 app.UseHttpsRedirection();
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 app.UseRouting();
 
