@@ -28,7 +28,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./L4d2PanelBackend.API/Dockerfile
+          context: ./L4d2PanelBackend/
+          file: ./L4d2PanelBackend/L4d2PanelBackend.API/Dockerfile
           push: true
           tags: ${{ github.event.inputs.tags }}
