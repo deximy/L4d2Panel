@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir addons cfg scripts
+mkdir -p addons cfg scripts
 
 echo "services:
   l4d2:
