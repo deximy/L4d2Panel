@@ -9,6 +9,7 @@
     <DockerfileFastModeStage>base</DockerfileFastModeStage>
     <DockerfileRunArguments>-p 27015:27015 -p 27015:27015/udp</DockerfileRunArguments>
     <DockerfileTag>l4d2panel</DockerfileTag>
+    <DockerfileContext>../..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>

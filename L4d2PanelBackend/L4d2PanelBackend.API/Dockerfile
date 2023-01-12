@@ -18,11 +18,17 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get update -y \
+    && apt install -y nodejs \
+    && corepack enable \
+    && corepack prepare pnpm@latest --activate
 WORKDIR /src
-COPY ["L4d2PanelBackend.API/L4d2PanelBackend.API.csproj", "L4d2PanelBackend.API/"]
-RUN dotnet restore "L4d2PanelBackend.API/L4d2PanelBackend.API.csproj"
+COPY ["L4d2PanelBackend/L4d2PanelBackend.API/L4d2PanelBackend.API.csproj", "L4d2PanelBackend/L4d2PanelBackend.API/"]
 COPY . .
-WORKDIR "/src/L4d2PanelBackend.API"
+RUN dotnet restore "L4d2PanelBackend/L4d2PanelBackend.API/L4d2PanelBackend.API.csproj" \
+    && pnpm -C ./L4d2PanelFrontend install
+WORKDIR "/src/L4d2PanelBackend/L4d2PanelBackend.API"
 RUN dotnet build "L4d2PanelBackend.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
