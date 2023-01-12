@@ -2,7 +2,9 @@
 
 FROM steamcmd/steamcmd AS get_l4d2_server
 RUN mkdir /home/l4d2_server \
-    && steamcmd +force_install_dir /home/l4d2_server +login anonymous +app_update 222860 validate +quit
+    && apt-get update -y \
+    && apt-get install -y --no-install-recommends expect \
+    && unbuffer steamcmd +force_install_dir /home/l4d2_server +login anonymous +app_update 222860 validate +quit
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /l4d2
@@ -20,7 +22,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get update -y \
-    && apt install -y nodejs \
+    && apt install -y --no-install-recommends nodejs \
     && corepack enable \
     && corepack prepare pnpm@latest --activate
 WORKDIR /src
