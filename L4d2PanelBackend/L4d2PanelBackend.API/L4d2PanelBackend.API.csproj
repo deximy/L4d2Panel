@@ -19,4 +19,12 @@
     <PackageReference Include="tusdotnet" Version="2.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="pnpm -C ../../L4d2PanelFrontend build" />
+  </Target>
+
 </Project>

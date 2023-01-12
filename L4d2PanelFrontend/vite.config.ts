@@ -7,7 +7,8 @@ export default defineConfig(
             vue()
         ],
         build: {
-            outDir: "../L4d2PanelBackend/L4d2PanelBackend.API/wwwroot"
+            outDir: "../L4d2PanelBackend/L4d2PanelBackend.API/wwwroot",
+            emptyOutDir: true,
         }
     }
 );
