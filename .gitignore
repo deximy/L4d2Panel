@@ -467,3 +467,9 @@ dist
 *.ntvs*
 *.njsproj
 *.sw?
+
+
+### Project.gitignore ###
+
+# Front-end project build output
+wwwroot/
