@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 read -p "请输入安装目录（默认为当前目录）: " install_dir
 if [ -z "$install_dir" ]; then
