@@ -1,6 +1,18 @@
 #!/bin/sh
 set -e
 
+echo "开始安装……"
+
+echo "正在检测是否已安装基础组件: docker"
+if ! command -v docker >/dev/null 2>&1 ; then
+  echo "未安装基础组件 docker，正在安装……"
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  sudo sh get-docker.sh
+  rm get-docker.sh
+  echo "基础组件 docker 安装完成。"
+fi
+echo "当前 docker 版本为：$(docker --version | awk '{print $3}' | tr -d ',') docker-compose 版本为：$(docker compose version | awk '{print $4}' | tr -d ',')"
+
 read -p "请输入安装目录（默认为当前目录）: " install_dir
 if [ -z "$install_dir" ]; then
   install_dir="$(pwd)"
