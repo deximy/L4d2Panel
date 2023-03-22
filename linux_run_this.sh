@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p addons cfg scripts
+mkdir -p addons cfg models sound scripts
 
 echo "services:
   l4d2:
@@ -13,6 +13,8 @@ echo "services:
     volumes:
       - addons:/l4d2/left4dead2/addons
       - cfg:/l4d2/left4dead2/cfg
+      - models:/l4d2/left4dead2/models
+      - sound:/l4d2/left4dead2/sound
       - scripts:/l4d2/left4dead2/scripts
 volumes:
   addons:
@@ -26,6 +28,18 @@ volumes:
     driver_opts:
       type: none
       device: $(pwd)/cfg
+      o: bind
+  models:
+    driver: local
+    driver_opts:
+      type: none
+      device: $(pwd)/models
+      o: bind
+  sound:
+    driver: local
+    driver_opts:
+      type: none
+      device: $(pwd)/sound
       o: bind
   scripts:
     driver: local
