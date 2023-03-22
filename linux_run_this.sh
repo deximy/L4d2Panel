@@ -94,4 +94,4 @@ volumes:
       type: none
       device: $install_dir/scripts
       o: bind
-" > docker-compose.yml
+" > $install_dir/docker-compose.yml
