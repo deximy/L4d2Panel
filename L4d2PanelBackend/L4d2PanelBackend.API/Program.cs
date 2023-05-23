@@ -90,13 +90,13 @@ static DefaultTusConfiguration CreateTusConfiguration(IServiceProvider servicePr
 {
     var env = (IWebHostEnvironment)serviceProvider.GetRequiredService(typeof(IWebHostEnvironment));
 
-    //文件上传路径
+    //鏂囦欢涓婁紶璺緞
     var tus_root_path = "/root";
 
     return new DefaultTusConfiguration
     {
         UrlPath = "/upload",
-        //文件存储路径
+        //鏂囦欢瀛樺偍璺緞
         Store = new TusDiskStore(tus_root_path),
         Events = new Events
         {

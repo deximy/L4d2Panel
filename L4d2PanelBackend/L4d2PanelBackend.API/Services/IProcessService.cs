@@ -6,7 +6,7 @@ namespace L4d2PanelBackend.API.Services
     {
         public bool is_running { get; }
 
-        public Task<Guid> RunServer(Action<string> callback);
+        public Task<Guid> RunServer(string additional_params, Action<string> callback);
 
         public void ExecCommand(string command);
 

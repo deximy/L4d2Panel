@@ -98,13 +98,14 @@ namespace L4d2PanelBackend.API.Controllers
         //}
 
         [HttpPost]
-        public async Task<IActionResult> RunServerAsync()
+        public async Task<IActionResult> RunServerAsync([FromQuery] string additional_params)
         {
             Guid? guid = null;
             try
             {
                 logger_.LogInformation("Try to start server.");
                 guid = await process_service_.RunServer(
+                    additional_params,
                     (msg) =>
                     {
                         hub_context_.Clients.All.SendAsync("ReceiveMessage", msg);

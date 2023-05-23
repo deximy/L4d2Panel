@@ -47,7 +47,7 @@ namespace L4d2PanelBackend.API.Services
         //    }
         //}
 
-        public async Task<Guid> RunServer(Action<string> callback)
+        public async Task<Guid> RunServer(string additional_params, Action<string> callback)
         {
             // is there any row which suggests process is running?
             var logs = await processes_repository_.Query(x => x.has_exited == false);
@@ -100,7 +100,7 @@ namespace L4d2PanelBackend.API.Services
 
                 process_ = new Process();
                 process_.StartInfo.FileName = "unbuffer";
-                process_.StartInfo.Arguments = "-p /l4d2/srcds_linux -game left4dead2 -ip 0.0.0.0 -port 27015 +map c2m1_highway";
+                process_.StartInfo.Arguments = "-p /l4d2/srcds_linux -game left4dead2 " + additional_params;
                 process_.StartInfo.UseShellExecute = false;
 
                 var callback_output = new DataReceivedEventHandler(
