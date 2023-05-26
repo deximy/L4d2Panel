@@ -6,7 +6,7 @@ RUN mkdir /home/l4d2_server \
     && apt-get install -y --no-install-recommends expect \
     && unbuffer steamcmd +force_install_dir /home/l4d2_server +login anonymous +app_update 222860 validate +quit
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /l4d2
 COPY --from=get_l4d2_server ["/home/l4d2_server", "."]
 RUN dpkg --add-architecture i386 \
@@ -19,7 +19,7 @@ VOLUME ["/l4d2/left4dead2/addons", "/l4d2/left4dead2/cfg", "/l4d2/left4dead2/scr
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get update -y \
     && apt install -y --no-install-recommends nodejs \
