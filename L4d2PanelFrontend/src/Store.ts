@@ -10,13 +10,15 @@ export const UseStore = DefineStore(
         const selected_file_name = ref("");
         const selected_file_type = ref("");
         const current_path = ref("./");
+        const additional_params = ref("");
         return {
             endpoint,
             component,
             is_server_running,
             selected_file_name,
             selected_file_type,
-            current_path
+            current_path,
+            additional_params,
         }
     }
 );

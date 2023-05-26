@@ -7,6 +7,7 @@ import App from "./App.vue";
 import Dashboard from "./views/Dashboard.vue";
 import Terminal from "./components/Terminal.vue";
 import FileManager from "./components/FileManager.vue";
+import SetupParameters from "./views/SetupParameters.vue";
 
 import {UseStore} from "./Store";
 
@@ -37,6 +38,14 @@ const routes = [
                 component: FileManager,
                 beforeEnter: () => {
                     store.component = "file";
+                },
+            },
+            {
+                path: "setup",
+                name: "setup",
+                component: SetupParameters,
+                beforeEnter: () => {
+                    store.component = "setup";
                 },
             },
             {

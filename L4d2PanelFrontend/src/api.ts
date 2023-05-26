@@ -3,7 +3,7 @@ import * as tus from "tus-js-client";
 
 import {UseStore} from "./Store";
 
-const RunServer = async () => {
+const RunServer = async (additional_params: string) => {
     const store = UseStore();
     // let uri = "http://" + store.endpoint + "/processes";
     let uri = "/processes";
@@ -11,6 +11,12 @@ const RunServer = async () => {
         uri,
         {
             method: "POST",
+            headers: new Headers(
+                {
+                    "Content-Type": "application/json"
+                }
+            ),
+            body: `"${additional_params}"`,
         }
     );
 };
