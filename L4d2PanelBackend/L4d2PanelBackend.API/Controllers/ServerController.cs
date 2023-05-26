@@ -98,7 +98,7 @@ namespace L4d2PanelBackend.API.Controllers
         //}
 
         [HttpPost]
-        public async Task<IActionResult> RunServerAsync([FromQuery] string additional_params)
+        public async Task<IActionResult> RunServerAsync([FromBody] string additional_params)
         {
             Guid? guid = null;
             try
