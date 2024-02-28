@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Remove unnecessary files
+        run: |
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       -
         name: Checkout 
         uses: actions/checkout@v2
