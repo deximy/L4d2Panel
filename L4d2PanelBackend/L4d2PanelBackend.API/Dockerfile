@@ -4,7 +4,8 @@ FROM steamcmd/steamcmd AS get_l4d2_server
 RUN mkdir /home/l4d2_server \
     && apt-get update -y \
     && apt-get install -y --no-install-recommends expect \
-    && unbuffer steamcmd +force_install_dir /home/l4d2_server +login anonymous +app_update 222860 validate +quit
+    && unbuffer steamcmd +force_install_dir /home/l4d2_server +login anonymous +@sSteamCmdForcePlatformType windows +app_update 222860 validate +quit \
+    && unbuffer steamcmd +force_install_dir /home/l4d2_server +login anonymous +@sSteamCmdForcePlatformType linux +app_update 222860 validate +quit
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /l4d2
